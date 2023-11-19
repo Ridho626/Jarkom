@@ -2,5 +2,14 @@
 - M. Azril Fathoni (5027211002)
 - Ridho Husni Indrawan (5027211043)
 
+## Topologi
+
+
 ## Soal 1
-> Lakukan konfigurasi sesuai dengan peta yang sudah diberikan. Melakukan konfigurasi terhadap semua client menggunakan DHCP server.
+>
+
+## Soal 2
+>
+
+## Soal 3
+
