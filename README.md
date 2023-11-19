@@ -31,7 +31,7 @@ iface eth4 inet static
 	address 10.78.4.0
 	netmask 255.255.255.0
 ```
-###  Himmel
+###  Himmel DHCP 
 ```
 auto eth0
 iface eth0 inet static
@@ -39,7 +39,7 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 10.78.1.0
 ```
-### Heiter
+### Heiter DNS 
 ```
 auto eth0
 iface eth0 inet static
@@ -47,13 +47,39 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 10.78.1.0
 ```
-### Denken
+### Denken Database 
 ```
 auto eth0
 iface eth0 inet static
 	address 10.78.2.2
 	netmask 255.255.255.0
 	gateway 10.78.2.0
+```
+### Eisen Load 
+```
+auto eth0
+iface eth0 inet static
+	address 10.78.2.3
+	netmask 255.255.255.0
+	gateway 10.78.2.0
+```
+### Frieren Laravel 
+```
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether e2:9b:dd:48:d7:7a
+```
+### Flamme Laravel
+```
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether 32:1b:dc:e1:e5:fb
+```
+### Fern Laravel
+```
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether e6:f3:18:44:66:da
 ```
 
 ## Soal 1
