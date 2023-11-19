@@ -2,8 +2,59 @@
 - M. Azril Fathoni (5027211002)
 - Ridho Husni Indrawan (5027211043)
 
-## Topologi
+### Topologi
 ![image](https://github.com/Ridho626/Jarkom/blob/58a6ddbe6f79b824efd75cd149a73716119b0817/Image/Screenshot%202023-11-19%20140813.png)
+
+### Config
+#### Aura (DHCP)
+```
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address 10.78.1.0
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address 10.78.2.0
+	netmask 255.255.255.0
+
+auto eth3
+iface eth3 inet static
+	address 10.78.3.0
+	netmask 255.255.255.0
+
+auto eth4
+iface eth4 inet static
+	address 10.78.4.0
+	netmask 255.255.255.0
+```
+###  Himmel
+```
+auto eth0
+iface eth0 inet static
+	address 10.78.1.2
+	netmask 255.255.255.0
+	gateway 10.78.1.0
+```
+### Heiter
+```
+auto eth0
+iface eth0 inet static
+	address 10.78.1.3
+	netmask 255.255.255.0
+	gateway 10.78.1.0
+```
+### Denken
+```
+auto eth0
+iface eth0 inet static
+	address 10.78.2.2
+	netmask 255.255.255.0
+	gateway 10.78.2.0
+```
 
 ## Soal 1
 > Lakukan konfigurasi sesuai dengan topologi yang ada. Kemudian, lakuakn register domain berupa riegel.canyon.com untuk Laravel dan granz.channel.com untuk worker PHP mengarah pada worker yang memiliki IP [prefix IP].x.1
