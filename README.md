@@ -81,6 +81,29 @@ auto eth0
 iface eth0 inet dhcp
 hwaddress ether e6:f3:18:44:66:da
 ```
+### Lawine PHP
+```
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether 16:71:c9:3e:36:f5
+```
+### Linie PHP
+```
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether 6a:e2:30:85:a1:b2
+```
+### Lugner PHP
+```
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether 72:47:98:04:b0:c0
+```
+### Revolte, Richter, Sein, Stark (Client)
+```
+auto eth0
+iface eth0 inet dhcp
+```
 
 ## Soal 1
 > Lakukan konfigurasi sesuai dengan topologi yang ada. Kemudian, lakuakn register domain berupa riegel.canyon.com untuk Laravel dan granz.channel.com untuk worker PHP mengarah pada worker yang memiliki IP [prefix IP].x.1
