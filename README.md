@@ -104,9 +104,10 @@ hwaddress ether 72:47:98:04:b0:c0
 auto eth0
 iface eth0 inet dhcp
 ```
-
+## Soal 0
+> Melakukan register domain berupa riegel.canyon.yyy.com untuk worker Laravel dan granz.channel.yyy.com untuk worker PHP (0) mengarah pada worker yang memiliki IP [prefix IP].x.1.
 ## Soal 1
-> Lakukan konfigurasi sesuai dengan topologi yang ada. Kemudian, lakuakn register domain berupa riegel.canyon.com untuk Laravel dan granz.channel.com untuk worker PHP mengarah pada worker yang memiliki IP [prefix IP].x.1
+> Lakukan konfigurasi sesuai dengan peta yang sudah diberikan.
 
 ## Soal 2
 > Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.16 - [prefix IP].3.32 dan [prefix IP].3.64 - [prefix IP].3.80 
