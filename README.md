@@ -1,4 +1,4 @@
-# Jarkom Modul 2 | IT29 | 2023
+# Jarkom Modul 3 | IT29 | 2023
 - M. Azril Fathoni (5027211002)
 - Ridho Husni Indrawan (5027211043)
 
