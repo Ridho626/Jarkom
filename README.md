@@ -9,7 +9,13 @@
 > Lakukan konfigurasi sesuai dengan topologi yang ada. Kemudian, lakuakn register domain berupa riegel.canyon.com untuk Laravel dan granz.channel.com untuk worker PHP mengarah pada worker yang memiliki IP [prefix IP].x.1
 
 ## Soal 2
->
+> Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.16 - [prefix IP].3.32 dan [prefix IP].3.64 - [prefix IP].3.80 
 
 ## Soal 3
+> Client yang melalui Switch4 mendapatkan range IP dari [prefix IP].4.12 - [prefix IP].4.20 dan [prefix IP].4.160 - [prefix IP].4.168 
 
+## Soal 4
+> Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut 
+
+## Soal 5
+> Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch3 selama 3 menit sedangkan pada client yang melalui Switch4 selama 12 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 96 menit 
