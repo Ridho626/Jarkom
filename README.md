@@ -404,6 +404,26 @@ Nama Algoritma Load Balancer
 ```bash
 ab -n 200 -c 10 http://www.granz.channel.it29.com/
 ```
+### Result
+1. Round Robin
+
+![round_robin](https://github.com/Ridho626/Jarkom-Modul-3-IT29-2023/assets/54212814/b3f871bb-56a9-445d-8b95-b99ae9e7fb96)
+
+2. Least Conn
+
+![least_conn](https://github.com/Ridho626/Jarkom-Modul-3-IT29-2023/assets/54212814/bad045c4-de73-4fb9-bbff-fd486508a281)
+
+3. IP Hash
+
+![ip_hash](https://github.com/Ridho626/Jarkom-Modul-3-IT29-2023/assets/54212814/6b74c4fd-5b6e-432c-b542-9a169cd7cbac)
+
+4. Generic Hash
+
+![generic_hash](https://github.com/Ridho626/Jarkom-Modul-3-IT29-2023/assets/54212814/14b6b5ac-deaf-4068-b4cf-be0abd8e1837)
+
+### Grafik
+
+![image](https://github.com/Ridho626/Jarkom-Modul-3-IT29-2023/assets/54212814/3bcc77c6-3735-4a9e-b00a-7309fbc65f56)
 
 ## Soal 9
 > Dengan menggunakan algoritma Round Robin, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 100 request dengan 10 request/second, kemudian tambahkan grafiknya pada grimoire
