@@ -731,10 +731,38 @@ ab -n 100 -c 10 -p login.json -T application/json http://10.78.4.1/api/auth/logi
 ## Soal 17
 > Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Tambahkan response dan hasil testing pada grimoire untuk `GET /me `
 ```bash
+curl -X POST -d @login.json -H "Content-Type: application/json" http://10.78.4.1:8001/api/auth/login |tee res.txt
+ab -n 100 -c 10 -H "Authorization: Bearer $(cat login_output.txt | jq -r '.token')" http://10.78.4.1:8001/api/me
 ```
 
 ## Soal 18 
 > Untuk memastikan ketiganya bekerja sama secara adil untuk mengatur Riegel Channel maka implementasikan Proxy Bind pada Eisen untuk mengaitkan IP dari Frieren, Flamme, dan Fern
+### Setup
+#### Eisen
+1. Buat konfigurasi nginx baru
+```bash
+echo 'upstream worker {
+    server 10.78.4.3:8001;
+    server 10.78.4.2:8002;
+    server 10.78.4.1:8003;
+}
+
+server {
+    listen 82;
+    server_name _;
+
+    location / {
+        proxy_pass http://worker;
+    }
+} 
+'> /etc/nginx/sites-available/laravel-worker
+
+ln -s /etc/nginx/sites-available/laravel-worker /etc/nginx/sites-enabled/laravel-worker
+```
+2. Restart service
+```bash
+service nginx start
+```
 
 ## Soal 19 
 > Untuk meningkatkan performa dari Worker, coba implementasikan PHP-FPM pada Frieren, Flamme, dan Fern. Untuk testing kinerja naikkan 
@@ -743,6 +771,104 @@ ab -n 100 -c 10 -p login.json -T application/json http://10.78.4.1/api/auth/logi
 - pm.min_spare_servers
 - pm.max_spare_servers
 sebanyak tiga percobaan dan lakukan testing sebanyak 100 request dengan 10 request/second kemudian berikan hasil analisisnya pada Grimoire
+### Setup
+#### Laravel Worker
+1. Ubah konfigurasi php-fpm
+```bash
+echo '[www]
+user = www-data
+group = www-data
+listen = /run/php/php8.0-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = 5
+pm.start_servers = 2
+pm.min_spare_servers = 1
+pm.max_spare_servers = 3' > /etc/php/8.0/fpm/pool.d/www.conf
+```
+2. Restart Service
+```
+service php8.0-fpm restart
+```
+3. Testing
+```
+ab -n 100 -c 10 -p login.json -T application/json http://10.78.4.1/api/auth/login
+```
+Selanjutnya, dilakukan langkah-langkah yang sama dengan menggunakan konfigurasi lain sebagai berikut:
+Config 2
+```
+echo '[www]
+user = www-data
+group = www-data
+listen = /run/php/php8.0-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = 10
+pm.start_servers = 4
+pm.min_spare_servers = 2
+pm.max_spare_servers = 6' > /etc/php/8.0/fpm/pool.d/www.conf
+```
+Config 3
+```
+echo '[www]
+user = www-data
+group = www-data
+listen = /run/php/php8.0-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+
+; Choose how the process manager will control the number of child processes.
+
+pm = dynamic
+pm.max_children = 15
+pm.start_servers = 6
+pm.min_spare_servers = 3
+pm.max_spare_servers = 9' > /etc/php/8.0/fpm/pool.d/www.conf
+```
 
 ## Soal 20 
 > Nampaknya hanya menggunakan PHP-FPM tidak cukup untuk meningkatkan performa dari worker maka implementasikan Least-Conn pada Eisen. Untuk testing kinerja dari worker tersebut dilakukan sebanyak 100 request dengan 10 request/second
+
+### Setup
+#### Eisen
+1. Edit konfigurasi load balancer.
+```bash
+echo 'upstream worker {
+    least_conn;
+    server 10.78.4.3:8001;
+    server 10.78.4.2:8002;
+    server 10.78.4.1:8003;
+}
+
+server {
+    listen 82;
+    server_name _;
+
+    location / {
+        proxy_pass http://worker;
+    }
+} 
+'> /etc/nginx/sites-available/laravel-worker
+```
+2. Restart service
+```
+service nginx restart
+```
+3. Testing
+```
+ab -n 100 -c 10 -p login.json -T application/json http://10.78.4.1/api/auth/login
+```
